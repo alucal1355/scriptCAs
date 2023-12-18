@@ -1,12 +1,10 @@
-Permisos para el usuario root
-chmod -R 700 /home/$usuario/ca/easy-rsa/
-Creando una entidad de certificación
-cd /home//ca/easy-rsa/
-Permisos para el usuario root
-chmod -R 700 /home/$usuario/ca/easy-rsa/
-Creando una entidad de certificación
-cd /home//ca/easy-rsa/
-Permisos para el usuario root
-chmod -R 700 /home/$usuario/ca/easy-rsa/
-Creando una entidad de certificación
-cd /home//ca/easy-rsa/
+# Copiar scripts desde cualquier gnu/linux -scp
+scp script-CA-preliminar.sh USUARIO@IP:RUTA
+scp script-Intermedia-preliminar.sh USUARIO@IP:RUTA
+
+##CA Raíz
+bash script-CA-preliminar.sh ó ./script-CA-preliminar.sh
+
+
+##En CA Intermedia
+bash script-Intermedia-preliminar.sh ó ./script-Intermedia-preliminar.sh
