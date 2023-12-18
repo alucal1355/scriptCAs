@@ -196,7 +196,9 @@ function revocarCertificado(){
 
 }
 
-creaUsuario
+
+
+creaCARaiz
 importarCA
 crearCertificadoCRT
 echo "¿Quieres distribuir a otro equipo el certificado CRT (upv-server.req) ?- s/n"
