@@ -79,11 +79,20 @@ function distribuirCerticado(){
 	echo "scp /home/$usuario/raiz/ca.crt $usuarioDestino@$ipDestino:$rutaFich" >> /home/$usuario/instrucciones.txt
 }
 
-creaUsuario
-limpiar
-generaArchivo
-instalarEasyRSA
-creaEstructura
-permisosRoot
-creaEntidadCertificacion
-distribuirCerticado
+function creaCARaiz(){
+	creaUsuario
+	limpiar
+	generaArchivo
+	instalarEasyRSA
+	creaEstructura
+	permisosRoot
+	creaEntidadCertificacion
+	echo "¿Quieres distribuir a otro equipo el certificado?- s/n"
+	read opcion 
+	if [[ $opcion == "s" ]]
+	then
+		distribuirCerticado
+	fi
+}
+
+creaCARaiz
