@@ -52,6 +52,7 @@ function creaEntidadCertificacion(){
 	echo "Hacemos copia del certificado raiz"
 	mkdir /home/$usuario/raiz
 	cp /home/$usuario/ca/easy-rsa/pki/ca.crt /home/$usuario/raiz/ca.crt
+	mkdir /home/$usuario/importarRaiz/
 	
 	echo "Creando una entidad de certificación" >> /home/$usuario/instrucciones.txt
 	echo 'cd /home/$usuario/ca/easy-rsa/' >> /home/$usuario/instrucciones.txt
@@ -60,11 +61,13 @@ function creaEntidadCertificacion(){
 	echo "Copiamos el contenido de vars a home/$usuario/ca/easy-rsa" >> /home/$usuario/instrucciones.txt
 	echo "Creamos el par de claves privada y pública" >> /home/$usuario/instrucciones.txt
 	echo './easyrsa build-ca' >> /home/$usuario/instrucciones.txt
-	echo 'cat /home/$usuario/ca/easy-rsa/pki/ca.crt'
-	echo 'cat /home/$usuario/ca/easy-rsa/pki/private/ca.key'
+	echo 'cat /home/$usuario/ca/easy-rsa/pki/ca.crt'>> /home/$usuario/instrucciones.txt
+	echo 'cat /home/$usuario/ca/easy-rsa/pki/private/ca.key'>> /home/$usuario/instrucciones.txt
 	echo "Hacemos copia del certificado raiz" >> /home/$usuario/instrucciones.txt
-	echo 'mkdir /home/$usuario/raiz'
-	echo 'cp /home/$usuario/ca/easy-rsa/pki/ca.crt /home/$usuario/raiz/'
+	echo 'mkdir /home/$usuario/raiz' >> /home/$usuario/instrucciones.txt
+	echo 'cp /home/$usuario/ca/easy-rsa/pki/ca.crt /home/$usuario/raiz/'>> /home/$usuario/instrucciones.txt
+	echo 'Prepara la estructura para importar el CA Raiz'>> /home/$usuario/instrucciones.txt
+	echo 'mkdir /home/$usuario/importarRaiz/'>> /home/$usuario/instrucciones.txt
 	
 
 }
@@ -103,8 +106,10 @@ function distribuirRevocados(){
 function importarCA(){
 	cd /home/$usuario/ca/easy-rsa/
 	cp /home/$usuario/raiz/ca.crt /usr/local/share/ca-certificates/
+	cp /home/$usuario/importarRaiz/ca.crt /usr/local/share/ca-certificates/
 	update-ca-certificates
 
+	cp /
 	echo "cd /home/$usuario/ca/easy-rsa/" >> /home/$usuario/instrucciones.txt
 	echo "cp /home/$usuario/raiz/ca.crt /usr/local/share/ca-certificates/" >> /home/$usuario/instrucciones.txt
 	echo "update-ca-certificates" >> /home/$usuario/instrucciones.txt
