@@ -14,3 +14,4 @@
 * scp vars USUARIO@IP:RUTA
 * scp /home/USUARIO/raiz/ca.crt USUARIO@IP:RUTA
 * mkdir /home/USUARIO/intermedia
+* cp /home/USUARIO/intermedia/ca.crt
