@@ -102,14 +102,18 @@ function distribuirRevocados(){
 
 function importarCA(){
 	cd /home/$usuario/ca/easy-rsa/
-	read -p "Importando certificado intermedia. Pulsa Enter " importando
-
 	cp /home/$usuario/raiz/ca.crt /usr/local/share/ca-certificates/
+	
+	
+	read -p "Importando certificado intermedia. Pulsa Enter " importando
+	mkdir /home/$usuario/intermedia/
+	cp /home/$usuario/scripts/ca.crt /home/$usuario/intermedia/ca.crt
+	mv /home/$usuario/intermedia/ca.crt /home/$usuario/intermedia/raiz.crt
+	cp /home/$usuario/intermedia/raiz.crt /usr/local/share/ca-certificates/
 	update-ca-certificates
 
 	read -p "Importando certificado raiz Pulsa Enter " importando
-	mv /home/$usuario/ca.crt /home/$usuario/raiz.crt
-	cp /home/$usuario/intermedio/raiz.crt /usr/local/share/ca-certificates/
+	cp /home/$usuario/intermedia/raiz.crt /usr/local/share/ca-certificates/
 
 	update-ca-certificates
 
@@ -119,7 +123,7 @@ function importarCA(){
 	echo "cp /home/$usuario/raiz/ca.crt /usr/local/share/ca-certificates/" >> /home/$usuario/instrucciones.txt
 	echo "update-ca-certificates" >> /home/$usuario/instrucciones.txt
 
-	echo "cp /home/$usuario/intermedio/ca.crt /usr/local/share/ca-certificates/" >>  /home/$usuario/instrucciones.txt
+	echo "cp /home/$usuario/intermedia/ca.crt /usr/local/share/ca-certificates/" >>  /home/$usuario/instrucciones.txt
 	echo "update-ca-certificates" >> /home/$usuario/instrucciones.txt
 
 }
