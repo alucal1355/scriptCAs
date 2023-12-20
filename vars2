@@ -1,0 +1,8 @@
+set_var EASYRSA_REQ_COUNTRY "ES"
+set_var EASYRSA_REQ_PROVINCE "Castellón"
+set_var EASYRSA_REQ_CITY "Castellón"
+set_var EASYRSA_REQ_ORG "vera"
+set_var EASYRSA_REQ_EMAIL "administrador@vera.es"
+set_var EASYRSA_REQ_OU "Dep-informatica"
+set_var EASYRSA_ALGO "ec"
+set_var EASYRSA_DIGEST "sha512"
