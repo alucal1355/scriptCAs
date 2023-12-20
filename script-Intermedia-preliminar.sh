@@ -103,17 +103,15 @@ function distribuirRevocados(){
 function importarCA(){
 	cd /home/$usuario/ca/easy-rsa/
 	cp /home/$usuario/raiz/ca.crt /usr/local/share/ca-certificates/
-	
-	
 	read -p "Importando certificado intermedia. Pulsa Enter " importando
+	update-ca-certificates
+	
+	
 	mkdir /home/$usuario/intermedia/
 	cp /home/$usuario/scripts/ca.crt /home/$usuario/intermedia/ca.crt
 	mv /home/$usuario/intermedia/ca.crt /home/$usuario/intermedia/raiz.crt
 	cp /home/$usuario/intermedia/raiz.crt /usr/local/share/ca-certificates/
-	update-ca-certificates
-
 	read -p "Importando certificado raiz Pulsa Enter " importando
-	cp /home/$usuario/intermedia/raiz.crt /usr/local/share/ca-certificates/
 
 	update-ca-certificates
 
